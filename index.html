@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indian Tax Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>Indian Income Tax Calculator</h1>
+        <p>Estimate tax payable using a configurable slab-based model.</p>
+      </header>
+
+      <section class="card" aria-labelledby="input-title">
+        <h2 id="input-title">Input</h2>
+        <form id="tax-form" class="form" novalidate>
+          <label for="annualIncome">Annual Income (₹)</label>
+          <input id="annualIncome" name="annualIncome" type="number" min="0" step="1000" placeholder="e.g. 1250000" required />
+
+          <label for="deductions">Deductions (₹)</label>
+          <input id="deductions" name="deductions" type="number" min="0" step="1000" value="0" />
+
+          <label for="regime">Tax Regime</label>
+          <select id="regime" name="regime">
+            <option value="new" selected>New Regime (Default)</option>
+          </select>
+
+          <button type="submit">Calculate Tax</button>
+          <p id="form-error" class="error" role="alert" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="card" aria-labelledby="result-title">
+        <h2 id="result-title">Tax Summary</h2>
+        <dl id="results" class="results">
+          <div><dt>Gross Income</dt><dd id="grossIncome">₹0</dd></div>
+          <div><dt>Taxable Income</dt><dd id="taxableIncome">₹0</dd></div>
+          <div><dt>Tax Before Cess</dt><dd id="taxBeforeCess">₹0</dd></div>
+          <div><dt>Health & Education Cess (4%)</dt><dd id="cess">₹0</dd></div>
+          <div class="total"><dt>Total Tax Payable</dt><dd id="totalTax">₹0</dd></div>
+        </dl>
+      </section>
+
+      <section class="card" aria-labelledby="slab-title">
+        <h2 id="slab-title">Slab Breakdown</h2>
+        <ul id="slabBreakdown" class="breakdown"></ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
